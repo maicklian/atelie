@@ -45,9 +45,9 @@ const SignUp = () => {
             <Text style={{ fontFamily: 'Poppins-Medium', color: '#414141', fontSize: 17, lineHeight: 24, marginBottom: 12 }}>Participe da nossa comunidade e compartilhe fotos dos seus outfits favoritos, explore artigos exclusivos sobre as últimas tendências e interaja com outros apaixonados pelo assunto!</Text>
 
             <FormField 
-              title="Nome de usuário"
+              title="Nome completo"
               value={form.username}
-              placeholder="Nome de usuário"
+              placeholder="Nome completo"
               handleChangeText={(e) => setForm({ ...form, username: e})}
             />
             <FormField 
