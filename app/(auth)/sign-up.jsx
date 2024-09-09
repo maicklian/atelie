@@ -1,39 +1,40 @@
-import { Image, StyleSheet, SafeAreaView, Text, View, ScrollView, Dimensions } from 'react-native'
+import { SafeAreaView, Text, View, ScrollView, Dimensions, Alert } from 'react-native'
 import { useState } from 'react'
 import { Link, router } from 'expo-router'
-
-import { images } from '../../constants'
 
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 
 import { createUser } from '../../lib/appwrite'
-import { isIfStatement } from 'typescript'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SignUp = () => {
+    const { setUser, setIsLogged } = useGlobalContext()
+
+    const [isSubmitting, setIsSubmititng] = useState(false)
     const [form, setForm] = useState({
       username: '',
       email: '',
       password: ''
     })
 
-    const [isSubmitting, setIsSubmititng] = useState(false)
-
     const submit = async () => {
-      if(!form.username || !form.email || !form.password){
-        Alert.alert('Error', 'Please')
+      if(!form.username === "" || !form.email === "" || !form.password === ""){
+        Alert.alert('Error', 'Please fill in all the fields')
       }
+
       setIsSubmititng(true)
-      try{
+      try {
         const result = await createUser(form.email, form.password, form.username)
-        
+        setUser(result)
+        setIsLogged(true)
+
         router.replace('/home')
-      }catch(error){
+      }catch (error){
         Alert.alert('Error', error.message)
-      }finally{
+      }finally {
         setIsSubmititng(false)
       }
-      createUser()
     }
 
     return (
@@ -60,12 +61,6 @@ const SignUp = () => {
               title="Senha"
               value={form.password}
               placeholder="Senha"
-              handleChangeText={(e) => setForm({ ...form, password: e})}
-            />
-            <FormField 
-              title="Senha"
-              value={form.password}
-              placeholder="Confirmar a senha"
               handleChangeText={(e) => setForm({ ...form, password: e})}
             />
             <CustomButton

@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, Image, View, ScrollView, Dimensions } from 'react-native'
+import { Alert, SafeAreaView, Text, Image, View, ScrollView, Dimensions } from 'react-native'
 import { useState } from 'react'
 import { Link, router } from 'expo-router'
 
@@ -7,15 +7,36 @@ import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 
+import { getCurrentUser, signIn } from '../../lib/appwrite'
+
 const SignIn = () => {
   const [form, setForm] = useState({
     email: '',
     password: ''
     })
+    
   const [isSubmitting, setIsSubmititng] = useState(false)
 
-  const submit = () => {
+  const submit = async () => {
+    if(!form.email === "" || !form.password === ""){
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
 
+    // setIsSubmititng(true)
+
+    try {
+      await signIn(form.email, form.password)
+      // const result = await getCurrentUser()
+      // setUser(result)
+      // setIsLogged(true)
+
+      Alert.alert("Success")
+      router.replace('/home')
+    }catch (error){
+      Alert.alert('Error', error.message)
+    }finally {
+      setIsSubmititng(false)
+    }
   }
 
     return (
@@ -49,13 +70,13 @@ const SignIn = () => {
             />
             <CustomButton
               title="Entrar"
+              handlePress={submit}
               isLoading={isSubmitting}
-              handlePress={() => router.push('/home')}
             />
 
             <View style={{ marginTop: 10, justifyContent: 'center', flexDirection: 'row', gap: 3 }}>
               <Text style={{ fontFamily: 'Poppins-Medium', color: '#414141' }}>Não tem uma conta?</Text>
-              <Link style={{ fontFamily: 'Poppins-Bold', color: '#F65AEF' }} href="/sign-up">Cadastre-se</Link>
+              <Link style={{ fontFamily: 'Poppins-Bold', color: '#F65AEF' }} href="/home">Cadastre-se</Link>
             </View>
             </View>
           </View>
