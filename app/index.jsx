@@ -12,8 +12,8 @@ import CustomButton from '../components/CustomButton'
 import { useGlobalContext } from '../context/GlobalProvider'
 
 export default function App(){
-    const {isLoading, isLoggedIn} = useGlobalContext()
-    if(!isLoading && isLoggedIn) return <Redirect href="/home" />
+    // const {isLoading, isLoggedIn} = useGlobalContext()
+    // if(!isLoading && isLoggedIn) return <Redirect href="/home" />
     
     return (
         <SafeAreaView style={{ backgroundColor: COLORS.white, height: '100%' }}>
@@ -27,7 +27,7 @@ export default function App(){
 
                     <Image 
                         source={images.cards}
-                        style={{ height: verticalScale(310), width: moderateScale(310) }}
+                        style={{ height: verticalScale(360), width: moderateScale(360) }}
                         resizeMode="contain"
                     />
 

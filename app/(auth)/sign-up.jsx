@@ -11,13 +11,14 @@ import { useGlobalContext } from '../../context/GlobalProvider'
 const SignUp = () => {
     const { setUser, setIsLogged } = useGlobalContext()
 
-    const [isSubmitting, setIsSubmititng] = useState(false)
+    // const [isSubmitting, setIsSubmititng] = useState(false)
     const [form, setForm] = useState({
       username: '',
       email: '',
       password: ''
     })
 
+    /*
     const submit = async () => {
       if(!form.username === "" || !form.email === "" || !form.password === ""){
         Alert.alert('Error', 'Please fill in all the fields')
@@ -36,6 +37,7 @@ const SignUp = () => {
         setIsSubmititng(false)
       }
     }
+    */
 
     return (
       <SafeAreaView style={{ height: '100%', backgroundColor: "#FFFFFF", flex: 1 }}>
@@ -65,8 +67,8 @@ const SignUp = () => {
             />
             <CustomButton
               title="Inscrever-se"
-              handlePress={submit}
-              isLoading={isSubmitting}
+              handlePress={() => router.push('/success-screen')}
+              // isLoading={isSubmitting}
             />
 
             <View style={{ marginTop: 10, justifyContent: 'center', flexDirection: 'row', gap: 3 }}>

@@ -15,7 +15,7 @@ const SignIn = () => {
     password: ''
     })
     
-  const [isSubmitting, setIsSubmititng] = useState(false)
+  /* const [isSubmitting, setIsSubmititng] = useState(false)
 
   const submit = async () => {
     if(!form.email === "" || !form.password === ""){
@@ -38,7 +38,7 @@ const SignIn = () => {
       setIsSubmititng(false)
     }
   }
-
+  */
     return (
       <SafeAreaView style={{ height: '100%', backgroundColor: "#FFFFFF" }}>
         <ScrollView>
@@ -68,15 +68,16 @@ const SignIn = () => {
               placeholder="Senha"
               handleChangeText={(e) => setForm({ ...form, password: e})}
             />
+            <Link style={{ marginTop: 10, alignSelf: 'flex-end', alignItems: 'flex-end', fontFamily: 'Poppins-Bold', color: '#F65AEF', marginBottom: -11 }} href="/forgot-password">Esqueceu sua senha?</Link>
             <CustomButton
               title="Entrar"
-              handlePress={submit}
-              isLoading={isSubmitting}
+              handlePress={() => router.push('/home')}
+              // isLoading={isSubmitting}
             />
 
             <View style={{ marginTop: 10, justifyContent: 'center', flexDirection: 'row', gap: 3 }}>
               <Text style={{ fontFamily: 'Poppins-Medium', color: '#414141' }}>Não tem uma conta?</Text>
-              <Link style={{ fontFamily: 'Poppins-Bold', color: '#F65AEF' }} href="/home">Cadastre-se</Link>
+              <Link style={{ fontFamily: 'Poppins-Bold', color: '#F65AEF' }} href="/sign-up">Cadastre-se</Link>
             </View>
             </View>
           </View>
