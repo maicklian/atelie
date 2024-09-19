@@ -8,7 +8,14 @@ import CustomButton from './CustomButton'
 
 const EmptyState = ({ title, subtitle }) => {
     return(
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View 
+            style={{ 
+            flex: 1, 
+            justifyContent: 'center', 
+            alignItems: 'center'
+         }}>
+
+
             <Text>EmptyState</Text>
             <Image
                 source={images.empty}

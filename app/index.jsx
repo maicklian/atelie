@@ -18,22 +18,49 @@ export default function App(){
     return (
         <SafeAreaView style={{ backgroundColor: COLORS.white, height: '100%' }}>
             <ScrollView style={{ minHeight: '85vh', height: '100%' }}>
-                <View style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingLeft: moderateScale(18), paddingRight: moderateScale(18), display: 'flex' }}>
+                
+                    <View style={{
+                            width: '100%',
+                            height: '100%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            paddingLeft: moderateScale(18),
+                            paddingRight: moderateScale(18),
+                            display: 'flex'
+                           
+                    }}>
                     <Image
                             source={images.logo}
-                            style={{ width: scale(120), height: verticalScale(70) }}
+                            style={{ width: scale(120),
+                            height: verticalScale(70)  
+                    }}
                             resizeMode="contain"
                     />
 
                     <Image 
-                        source={images.cards}
-                        style={{ height: verticalScale(360), width: moderateScale(360) }}
+                            source={images.cards}
+                            style={{
+                            height: verticalScale(360),
+                            width: moderateScale(360) 
+                    }}
                         resizeMode="contain"
                     />
 
-                    <Text style={{ fontFamily: 'Poppins-Medium', width: '100%', color: '#414141', fontSize: 19, lineHeight: 24, marginBottom: 5 }}>{`Transforme sua paixão por moda em uma experiência compartilhada!\nJunte-se a nós para exibir seu estilo único e explorar conteúdos cuidadosamente escolhidos para inspirar sua jornada fashion.`}</Text>
+                    <Text style={{
+                            fontFamily: 'Poppins-Medium',
+                            width: '100%',
+                            color: '#414141',
+                            fontSize: 19,
+                            lineHeight: 24,
+                            marginBottom: 5 
+                    }}>
+                                
+                                
+                    {`Transforme sua paixão por moda em uma experiência compartilhada!\nJunte-se a nós para exibir seu estilo único e explorar conteúdos cuidadosamente escolhidos para inspirar sua jornada fashion.`}</Text>
 
-                    <View style={{ width: '100%' }}>
+                    <View style={{
+                            width: '100%'
+                    }}>
                         <CustomButton
                             title="Continuar"
                             handlePress={() => router.push('/sign-up')}
